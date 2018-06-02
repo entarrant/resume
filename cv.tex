@@ -2,19 +2,31 @@
 
 %A Few Useful Packages
 \usepackage{marvosym}
-%\usepackage{xunicode,xltxtra,url,parskip}  %other packages for formatting
+\usepackage{fontspec} 					%for loading fonts
+\usepackage{xunicode,xltxtra,url,parskip} 	%other packages for formatting
 \RequirePackage{color,graphicx}
 \usepackage[usenames,dvipsnames]{xcolor}
-\usepackage[big]{layaureo}        %better formatting of the A4 page
+\usepackage[big]{layaureo} 				%better formatting of the A4 page
 % an alternative to Layaureo can be ** \usepackage{fullpage} **
-\usepackage{supertabular}         %for Grades
-\usepackage{titlesec}         %custom \section
+\usepackage{supertabular} 				%for Grades
+\usepackage{titlesec}					%custom \section
 
 %Setup hyperref package, and colours for links
 \usepackage{hyperref}
 \definecolor{linkcolour}{rgb}{0,0.2,0.6}
 \hypersetup{colorlinks,breaklinks,urlcolor=linkcolour, linkcolor=linkcolour}
 
+%FONTS
+\defaultfontfeatures{Mapping=tex-text}
+%\setmainfont[SmallCapsFont = Fontin SmallCaps]{Fontin}
+%%% modified for Karol Kozioł for ShareLaTeX use
+\setmainfont[
+SmallCapsFont = Fontin-SmallCaps.otf,
+BoldFont = Fontin-Bold.otf,
+ItalicFont = Fontin-Italic.otf
+]
+{Fontin.otf}
+%%%
 
 %CV Sections inspired by:
 %http://stefano.italians.nl/archives/26
@@ -23,96 +35,96 @@
 %Tweak a bit the top margin
 %\addtolength{\voffset}{-1.3cm}
 
-%Italian hyphenation for the word: ''corporations''
-\hyphenation{im-pre-se}
-
-%-------------WATERMARK TEST [**not part of a CV**]---------------
-\usepackage[absolute]{textpos}
-
-\setlength{\TPHorizModule}{30mm}
-\setlength{\TPVertModule}{\TPHorizModule}
-\textblockorigin{2mm}{0.65\paperheight}
-\setlength{\parindent}{0pt}
-
 %--------------------BEGIN DOCUMENT----------------------
 \begin{document}
 
-
 \pagestyle{empty} % non-numbered pages
+
+\font\fb=''[cmr10]'' %for use with \LaTeX command
 
 %--------------------TITLE-------------
 \par{\centering
-  {\Huge{Emily N Tarrant}
+  {\Huge Emily N Tarrant
 }\bigskip\par}
 
 %--------------------SECTIONS-----------------------------------
 %Section: Personal Information
 \section{Personal Information}
+
 \begin{tabular}{rl}
-  \textsc{Phone:}         & (512) 709-1062 \\
-  \textsc{Email:}         & entarrant@utexas.edu \\
+    \textsc{Phone:}     & 512-709-1062\\
+    \textsc{email:}     & \href{mailto:entarrant@utexas.edu}{entarrant@utexas.edu} \\
+    \textsc{Address:}   & 11420 Mordred Court, Austin, TX 78739
 \end{tabular}
 
-%Section: Work Experience
+%Section: Work Experience at the top
 \section{Work Experience}
 \begin{tabular}{r|p{11cm}}
-  Spiceworks & \textbf{Software Developer} \\
-  \textsc{July 2015 - Present} &
-    \footnotesize{
-      $\cdot$ Introduced and enforced first versioned API to Spiceworks Community monolith Ruby on Rails application
+ \textsc{Dec 2017-Present} & Software Developer II at \textsc{Spiceworks, Inc} \\&\footnotesize{
+   $\cdot$ Took primary ownership of Spiceworks Community Feed project
 
-      $\cdot$ Designed and implemented backend streaming service for
-      Community's activity feed
+   $\cdot$ Coordinated with frontend and project management teams to determine Feed product direction
 
-      $\cdot$ Eventually became sole maintainer of the feed backend, which required coordinating with frontend and project management teams along with making lead backend implementation decisions
+   $\cdot$ Made backend implementation decisions as subject matter expert
 
-      $\cdot$ Routinely lead weekly development releases of Rails monolith
-      that required coordinating between multiple teams
-    }
-  \\\multicolumn{2}{c}{} \\
+   $\cdot$ Lead development releases of Spiceworks Community Ruby on Rails application
+ }\\\multicolumn{2}{c}{} \\
+ \textsc{Jul 2015-Dec 2017} & Software Developer I at \textsc{Spiceworks, Inc} \\&\footnotesize{
+ $\cdot$ Introduced and enforced first versioned API to Spiceworks Community Ruby on Rails application
 
-  Spiceworks & \textbf{Software Development Intern} \\
-  \textsc{May 2014 - May 2015} &
-    \footnotesize{
-      $\cdot$ Worked on Rails backend for hosted ticketing application
+ $\cdot$ Designed and implemented backend streaming service for the Community Feed backed by Cassandra database
 
-      $\cdot$ Developed way to track history of changes made to tickets
+ $\cdot$ Assisted in upgrading Spiceworks Community application from Rails 3 to Rails 4.2
+ }\\\multicolumn{2}{c}{} \\
+\textsc{May 2014-May 2015} & Software Development Intern at \textsc{Spiceworks, Inc}, \\&\footnotesize{
+ $\cdot$ Worked on Rails backend for hosted ticketing application
 
-      $\cdot$ Improved usability of existing internal tool for Spiceworks ad managers
-    }
-  \\\multicolumn{2}{c}{} \\
+ $\cdot$ Developed way to track history of changes made to tickets
 
-  Spiceworks & \textbf{Test Engineer Intern} \\
-  \textsc{May 2013 - Sept 2014} &
-    \footnotesize{
-      $\cdot$ Extensively tested the UI functionality of the Spiceworks
-      app using watir-webdriver suites in the rspec framework
+ $\cdot$ Improved usability of existing internal tool for Spiceworks ad managers
+}\\\multicolumn{2}{c}{} \\
+\textsc{May 2013-Sept 2013} & Software Test Intern at \textsc{Spiceworks, Inc}, \\&\footnotesize{
+ $\cdot$ Extensively tested UI functionality of Spiceworks desktop app using watir-webdriver suites in rspec framework
 
-      $\cdot$ Assisted in the testing of multiple releases in the app’s
-      7.0 beta release sequence
+ $\cdot$ Assisted in testing of multiple releases in the app's 7.0 beta sequence
 
-      $\cdot$ Maintained and developed the bank of automated tests for the
-      app
+ $\cdot$ Maintained and developed app's bank of automated tests
 
-      $\cdot$ Coordinated with app development and testing teams to
-      resolve bugs for the releases
-    }
-  \\\multicolumn{2}{c}{} \\
+ $\cdot$ Coordinated with app development and testing teams to resolve bugs for releases
+}
+\end{tabular}
 
+\section{Skills}
+\begin{tabular}{r|p{11cm}}
+  Languages/Frameworks &\footnotesize{
+    Ruby $\cdot$ Rails $\cdot$ Java
+  }\\\multicolumn{2}{c}{} \\
+  Technologies &\footnotesize{
+    Redis $\cdot$ Sidekiq $\cdot$ PostgreSQL $\cdot$ Cassandra $\cdot$ Amazon Web Services $\cdot$ Kubernetes
+  }
 \end{tabular}
 
 %Section: Education
 \section{Education}
-\begin{tabular}{rp{11cm}}
-  \textsc{May 2015} & B.S. In Computer Science, \textbf{University of Texas at Austin}\\
+\begin{tabular}{r|p{11cm}}
+  \textsc{Aug 2012-May 2015} & B.S. In Computer Science, \textbf{University of Texas at Austin}\\
   \textsc{GPA}: 3.48 &
   \footnotesize{
-    Degree in computer science with courses including upper division math,
-    data processing and management, and software engineering
+    Degree in computer science with courses including upper division math, data processing and management, and software engineering
+  }\\\multicolumn{2}{c}{} \\
+  Aug 2012-Aug 2014 & Association for Computing Machinery, \textbf{President}\\&\footnotesize{
+    $\cdot$ Reinstated the University of Texas at Austin chapter of the national organization
+
+    $\cdot$ Organized tech talks and social events sponsored by tech companies
+
+    $\cdot$ Coordinated with professors to organize weekly tutoring sessions for core classes
+
+    $\cdot$ Restarted UT Computer Science's involvement in national ACM International Collegiate Programming Contest
   }
   \\\multicolumn{2}{c}{} \\
-
 \end{tabular}
+
+%\hypertarget{gmat}{\textsc{Gmat}\setmainfont{LMRoman10 Regular}\textregistered\setmainfont[SmallCapsFont=Fontin-SmallCaps]{Fontin-Regular}}
 
 %\XeTeXpdffile ''GMAT.pdf'' page 1 scaled 800
 
